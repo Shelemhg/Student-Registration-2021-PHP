@@ -204,17 +204,18 @@ function SendData(data){
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("message_container").innerHTML = "";
             document.getElementById("message_container").innerHTML = "Register done!";
-            
+            // console.log("RESPONSE: " + this.responseText);
+
             readFileJSON(this.responseText);
-        //   document.getElementById("clear").click();
+
         } else if (this.readyState == 4) {
             document.getElementById("28 message_container").innerHTML = "";
             document.getElementById("29 message_container").innerHTML = "The url doesn't exist";
         }
       };
 
-    //xhr.open("POST", "assign13.php", true);
-    //xhr.send(data);
+    xhr.open("POST", "assign13.php", true);
+    xhr.send(data);
 }
 
 
@@ -243,22 +244,8 @@ function readFileJSON(response) {
             }
             data+= " ";
         }
-    
-        // let data = "";
-    //     for(let i = 0; i < lines.length; i++){
-    //         let words = lines[i].split(',');
-    //         data += words
-    //     }
-
-
-        // filesJSON = filesJSON.split(",");
         records = "";
         data = data.split(' ');
-        
-        console.log("239 Data: " + data);
-        console.log(data.length);
-        console.log("239 Data[1]: " + data[0]);
-        // console.log("240 DATA[1][0]: " + data[1][0]);
         
         for(var i = 0; i < data.length - 1; i+=12){
                 
@@ -313,9 +300,9 @@ function readFileJSON(response) {
                     `
             
         };
-        console.log("302 records: " + records);
+        // console.log("302 records: " + records);
         document.getElementById("display_area").innerHTML = records;
-        console.log("DONE? records: " + records);
+        // console.log("DONE? records: " + records);
     }else{
         
         document.getElementById("display_area").innerHTML = "THERE ARE NOT STUDENTS REGISTERED"  
@@ -344,7 +331,7 @@ function loadFile() {
         document.getElementById("message_container").innerHTML = "The url doesn't exist";
       }
     };
-    //xhr.open("POST", "assign13.php", true);
-    //xhr.send(formData);
+    xhr.open("POST", "assign13.php", true);
+    xhr.send(formData);
     console.log(formData)
   }
