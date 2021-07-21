@@ -7,12 +7,21 @@ if(isset($_POST['load'])) {
     } 
 }else if(isset($_POST['performance'])){
     $performance = $_POST['performance'];
+
+    if ($performance == "Duo"){
+        $first_name_2 = $_POST['first_name_2'];
+        $last_name_2 = $_POST['last_name_2'];
+        $student_id_2 = $_POST['student_id_2'];
+    }else{
+        $first_name_2 = "";
+        $last_name_2 = "";
+        $student_id_2 = "";
+    }
+
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $student_id = $_POST['student_id'];
-    $first_name_2 = $_POST['first_name_2'];
-    $last_name_2 = $_POST['last_name_2'];
-    $student_id_2 = $_POST['student_id_2'];
+    
 
     $skills = $_POST['skills'];
 
@@ -47,6 +56,7 @@ if(isset($_POST['load'])) {
             $json_data = file_get_contents('data/data.txt');
             $str =  json_encode($json_data);
             print "\n $str \n";   //output the json string - The string is sent to the browser.    
+            // return $str;
         }  
     }
 }
