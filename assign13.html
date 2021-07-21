@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registration for piano students">    
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Piano Registration</title>
+    
+</head>
+<body> 
+    <div class="container" 
+        id= container-1
+        >
+        <h1>
+            Piano Registration
+        </h1>
+        <form>
+            <div class="field-container">
+                <div>
+                    <input 
+                        type="radio" 
+                        name="performance_type" 
+                        value="Solo"
+                        onclick="GenerateForm()"
+                        id="soloRadial"
+                    > 
+                        Solo
+                    <input 
+                        type="radio" 
+                        name="performance_type" 
+                        value="Duo"
+                        onclick="GenerateForm()"
+                        id="duoRadial"
+                    > 
+                        Duo
+                    <input 
+                        type="radio" 
+                        name="performance_type" 
+                        value="Concerto"
+                        onclick="GenerateForm()"
+                        id="concertoRadial"
+                    > 
+                        Concerto
+                </div>
+            <div id="forms_container">
+                
+            </div>
+            <div id="forms_2_container">
+                
+            </div>
+            <div id="general_info_container">
+
+            </div>
+            <div class="field-container">            
+                <hr>
+                <button 
+                    type="button"
+                    name="clear"
+                    onclick="GenerateForm()"> 
+                    Clear
+                </button>
+                <button 
+                    type="button"
+                    name="register"
+                    onclick="GetData()">
+                    Register
+                </button>
+            </div>    
+        </form>
+    </div>
+    <hr>
+    <div id="message_container">
+
+    </div>
+    <hr>
+    <div id="display_area">
+        
+    </div>
+    <div class="registration">
+        
+    </div>
+    
+    <footer>
+        Copyright Shelem H. 2021&copy;
+    </footer>
+</body>
+<script src="script.js"></script>
+</html>
