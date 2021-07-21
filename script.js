@@ -355,7 +355,6 @@ function loadFile() {
 
     formData.append('load', '1');
 
-    // console.log("345 js form DATA FROM LOADING FILE:");
     for (var pair of formData.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     }
