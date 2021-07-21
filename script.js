@@ -167,66 +167,39 @@ function GetData(){
     data.append('first_name', first_name);
     data.append('last_name', last_name);
     data.append('student_id', student_id);
-
-    let std_2 = document.getElementById("first_name_2");
-    console.log("FIRSTNAME 2: " + std_2);
-    if(std_2){
+    if(performance === 'Duo'){
         let first_name_2 = document.getElementById("first_name_2").value;
         let last_name_2 = document.getElementById("last_name_2").value;
         let student_id_2 = document.getElementById("student_id_2").value;
         data.append('first_name_2', first_name_2);
         data.append('last_name_2', last_name_2);
         data.append('student_id_2', student_id_2);
-    }else{
-        data.append('first_name_2', "");
-        data.append('last_name_2', "");
-        data.append('student_id_2', "");
     }
-
     data.append('skills', skills);    
     data.append('instrument_selected', instrument_selected);
     data.append('location', location);
     data.append('room', room);
     data.append('time', time);
     console.log("PERFORMANCe " + performance)
-    if(performance == "Solo" || performance == "Concerto"){
-        if(performance == "" ||
-        first_name == "" || 
-        last_name == "" || 
-        student_id =="" ||
-        skills == "" ||
-        instrument_selected == "" ||
-        location == "" ||
-        room == "" ||
-        time == ""){
-        document.getElementById("message_container").innerHTML = "Please complete all the fields";
-        }else{
-            SendData(data);
-        }
-    }else{
-        if(performance == "" ||
-        first_name == "" || 
-        last_name == "" || 
-        student_id =="" || 
-        first_name_2 == "" || 
-        last_name_2 == "" ||
-        student_id_2 == "" ||
-        skills == "" ||
-        instrument_selected == "" ||
-        location == "" ||
-        room == "" ||
-        time == ""){
-            document.getElementById("message_container").innerHTML = "Please complete all the fields";
-        
-        }else{
-            SendData(data);
+    const errors = validateFields(data)
+    errors.length === 0  
+        ? SendData(data)
+        : errors.forEach(e => document.getElementById("message_container").innerHTML += `<p>Please complete this field: ${e}</p>`)
+}
+
+const validateFields = (data) =>{
+    const fieldsWithError = []
+    for (let e of data.entries()){
+        if(e[1] === '' || e[1] === null || e[1]=== ' ' ){
+            fieldsWithError.push(e[0])
         }
     }
+    return fieldsWithError
 }
 
 function SendData(data){
+    alert('Se pasó a la función de envio')
     var xhr = new XMLHttpRequest();
-
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("message_container").innerHTML = "";
@@ -240,8 +213,8 @@ function SendData(data){
         }
       };
 
-    xhr.open("POST", "assign13.php", true);
-    xhr.send(data);
+    //xhr.open("POST", "assign13.php", true);
+    //xhr.send(data);
 }
 
 
@@ -371,6 +344,7 @@ function loadFile() {
         document.getElementById("message_container").innerHTML = "The url doesn't exist";
       }
     };
-    xhr.open("POST", "assign13.php", true);
-    xhr.send(formData);
+    //xhr.open("POST", "assign13.php", true);
+    //xhr.send(formData);
+    console.log(formData)
   }
